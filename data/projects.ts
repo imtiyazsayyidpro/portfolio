@@ -186,7 +186,7 @@ export const personalProjects: PersonalProject[] = [
     tagline: "Workout Tracking · Progressive Overload",
     pill: "Workout Tracking · Progressive Overload",
     description: "Most workout apps are too cluttered or too casual. Gymbro treats workout tracking like a proper system — repeatable routines, set-by-set logging, drop sets, progress over time.",
-    url: "gymbro.imtiyazsayyid.in",
+    url: "https://gymbro.imtiyazsayyid.in",
     urlLabel: "gymbro.imtiyazsayyid.in →",
     sections: [
       {
