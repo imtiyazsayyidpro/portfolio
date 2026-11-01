@@ -1,198 +1,93 @@
-import type { Metadata } from "next";
-import { Geist, JetBrains_Mono, Instrument_Serif } from "next/font/google";
-import { siteConfig } from "@/data/siteConfig";
+import type { Metadata, Viewport } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import { Figtree, Fraunces } from "next/font/google";
+import { AnalyticsEvents } from "@/components/analytics/AnalyticsEvents";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { site } from "@/lib/site";
+import { structuredDataJson } from "@/lib/structuredData";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist",
+// Both are variable fonts: one file each covers every weight we use
+// (Figtree 400–700, Fraunces 400 with optical sizing), which is lighter than
+// several static weight files. Fallback metrics are adjusted to avoid layout
+// shift while they swap in.
+const figtree = Figtree({
+  variable: "--font-figtree",
   subsets: ["latin"],
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+// Display serif for the wordmark and headings; the optical size axis keeps
+// large headings crisp.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
+  axes: ["opsz"],
   display: "swap",
-  weight: ["400", "500"],
 });
 
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  display: "swap",
-  weight: "400",
-  style: ["normal", "italic"],
-});
+const gaId = process.env.NEXT_PUBLIC_GA_ID;
+const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
 
-const siteUrl = siteConfig.website;
-const aboutUrl = "https://about.imtiyazsayyid.in";
-const logoPath = "/assets/logo/logo.png";
-const logoUrl = `${siteUrl}${logoPath}`;
-const seoTitle = siteConfig.title;
-const seoDescription = siteConfig.description;
-
+// Icons, the manifest and the link-preview image come from file conventions
+// in app/: favicon.ico, icon.svg, apple-icon.png, manifest.ts and
+// opengraph-image.png (+ .alt.txt), which Next.js links automatically.
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  applicationName: siteConfig.name,
-  title: {
-    default: seoTitle,
-    template: `%s — ${siteConfig.name}`,
-  },
-  description: seoDescription,
+  metadataBase: new URL(site.url),
+  title: site.title,
+  description: site.description,
   keywords: [
-    "Imtiyaz Sayyid",
-    "Full-Stack Developer Mumbai",
-    "Next.js Developer",
-    "Node.js Developer",
-    "CRM Developer",
-    "Admin Dashboard Developer",
-    "AI Workflow Developer",
-    "TypeScript Developer",
-    "MySQL Developer",
-    "Production Web Applications",
+    "custom software",
+    "custom business software",
+    "CRM",
+    "ERP",
+    "business automation",
+    "software consultant",
+    "small and mid-sized businesses",
+    "Mumbai",
+    "India",
   ],
-  authors: [{ name: siteConfig.name, url: siteUrl }],
-  creator: siteConfig.name,
-  publisher: siteConfig.name,
-  category: "technology",
-  referrer: "origin-when-cross-origin",
-  alternates: {
-    canonical: "/",
-    languages: {
-      "en-IN": "/",
-    },
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: logoPath, type: "image/png", sizes: "512x512" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: [{ url: logoPath, type: "image/png", sizes: "512x512" }],
-  },
-  manifest: "/manifest.webmanifest",
+  authors: [{ name: site.name, url: site.url }],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: seoTitle,
-    description: seoDescription,
-    url: siteUrl,
-    siteName: siteConfig.name,
+    title: site.title,
+    description: site.description,
+    url: "/",
+    siteName: site.name,
     locale: "en_IN",
     type: "website",
-    images: [
-      {
-        url: logoUrl,
-        width: 512,
-        height: 512,
-        alt: `${siteConfig.name} logo`,
-        type: "image/png",
-      },
-    ],
   },
   twitter: {
-    card: "summary",
-    title: seoTitle,
-    description: seoDescription,
-    images: [
-      {
-        url: logoUrl,
-        alt: `${siteConfig.name} logo`,
-      },
-    ],
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  appleWebApp: {
-    capable: true,
-    title: siteConfig.name,
-    statusBarStyle: "black-translucent",
-  },
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
+  ...(gscVerification ? { verification: { google: gscVerification } } : {}),
 };
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": `${siteUrl}/#person`,
-      name: siteConfig.name,
-      url: siteUrl,
-      image: logoUrl,
-      jobTitle: "Full-Stack Developer",
-      email: `mailto:${siteConfig.email}`,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Mumbai",
-        addressCountry: "IN",
-      },
-      sameAs: [siteConfig.social.linkedin, siteConfig.social.github, aboutUrl],
-      knowsAbout: [
-        "Full-stack development",
-        "CRM systems",
-        "Admin dashboards",
-        "AI workflows",
-        "Next.js",
-        "Node.js",
-        "MySQL",
-        "Production deployment",
-      ],
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      name: siteConfig.name,
-      url: siteUrl,
-      alternateName: siteConfig.websiteLabel,
-      description: seoDescription,
-      publisher: {
-        "@id": `${siteUrl}/#person`,
-      },
-    },
-  ],
+export const viewport: Viewport = {
+  themeColor: site.themeColor,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
-      data-theme="dark"
-      suppressHydrationWarning
-      className={`${geist.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable}`}
+      lang="en-IN"
+      data-scroll-behavior="smooth"
+      className={`${figtree.variable} ${fraunces.variable} antialiased`}
     >
-      <head>
-        {/* Runs synchronously before first paint — prevents theme flash */}
-        <script
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}`,
-          }}
-        />
+      <body className="min-h-dvh bg-canvas font-sans text-body text-ink">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(structuredData),
-          }}
+          dangerouslySetInnerHTML={{ __html: structuredDataJson() }}
         />
-      </head>
-      <body>{children}</body>
+        <SmoothScroll />
+        <AnalyticsEvents />
+        {children}
+      </body>
+      {/* Google Analytics 4: production builds only, loaded after the page
+          is interactive (the component uses next/script afterInteractive) */}
+      {process.env.NODE_ENV === "production" && gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }

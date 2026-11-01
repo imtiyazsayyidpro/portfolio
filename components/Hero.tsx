@@ -1,66 +1,81 @@
-import { siteConfig } from "@/data/siteConfig";
+import { Fragment } from "react";
+import { HeroBoardDemo } from "@/components/demos/HeroBoardDemo";
+import { BookCallButton } from "@/components/ui/BookCallButton";
+import { ButtonLink, LinkArrow } from "@/components/ui/Button";
+import { Container } from "@/components/ui/Container";
+import { trackClick } from "@/lib/analytics";
 
-export default function Hero() {
-  const { hero } = siteConfig;
+const headline = "Software built around how you work.".split(" ");
 
+/*
+ * Load sequence (the page's one big moment, ~1.5s, pure CSS):
+ * headline words rise in one after another → subline → buttons → the demo
+ * frame slides up → the demo's cursor starts. Reduced motion shows the final
+ * state at once. The headline only moves (never fades), so it is visible in
+ * the first paint and nothing delays it for search engines or LCP.
+ */
+const WORD_STEP = 70;
+const SUBLINE_DELAY = 420;
+const BUTTONS_DELAY = 540;
+const DEMO_DELAY = 600;
+/** The demo starts once its frame has (almost) finished sliding up. */
+const DEMO_START = DEMO_DELAY + 650;
+
+export function Hero() {
   return (
-    <section className="hero no-border">
-      <div className="container">
-        <div className="hero-grid">
-          {/* Eyebrow */}
-          <div className="hero-eyebrow anim-rise">
-            <span className="tag">
-              <span className="dot" />
-              {hero.eyebrow.badge}
-            </span>
-            {hero.eyebrow.pills.map((pill) => (
-              <span key={pill} className="pill">
-                {pill}
-              </span>
-            ))}
-          </div>
+    <section
+      id="top"
+      aria-labelledby="hero-title"
+      className="relative isolate pt-16 pb-16 md:pt-24 md:pb-24"
+    >
+      {/* Background: faint dot grid fading out towards the edges */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-dot-grid" />
 
-          {/* Headline */}
-          <h1 className="anim-rise d1">
-            {hero.headline1}
-            <br />
-            {hero.headline2}{" "}
-            <em>
-              real
-              <br />
-              business workflows.
-            </em>
+      <Container>
+        <div className="mx-auto max-w-4xl text-center">
+          <h1
+            id="hero-title"
+            className="font-display text-hero-sm font-normal tracking-display text-ink text-balance md:text-hero"
+          >
+            {headline.map((word, index) => (
+              <Fragment key={index}>
+                <span
+                  className="inline-block animate-word-rise"
+                  style={{ animationDelay: `${index * WORD_STEP}ms` }}
+                >
+                  {word}
+                </span>
+                {index < headline.length - 1 && " "}
+              </Fragment>
+            ))}
           </h1>
-
-          {/* Sub */}
-          <p className="hero-sub anim-rise d2">
-            I&apos;m <strong>Imtiyaz Sayyid</strong>, a full-stack developer
-            from Mumbai. I build CRM systems, admin dashboards, AI-powered
-            tools, and production web applications — software that sits where
-            business operations meet code.
+          <p
+            className="mx-auto mt-6 max-w-2xl animate-rise-in text-lead text-stone md:text-heading-sm md:font-normal"
+            style={{ animationDelay: `${SUBLINE_DELAY}ms` }}
+          >
+            We turn messy Excel sheets and WhatsApp chaos into simple custom
+            software your team actually uses.
           </p>
-
-          {/* CTAs */}
-          <div className="hero-actions anim-rise d3">
-            <a href="#work" className="btn primary">
-              View My Work <span className="arrow">→</span>
-            </a>
-            <a href="#contact" className="btn">
-              Get in Touch
-            </a>
-          </div>
-
-          {/* Credentials grid */}
-          <div className="hero-cred anim-rise d4">
-            {hero.credentials.map((cred) => (
-              <div key={cred.num} className="hero-cred-item">
-                <span className="num">{cred.num}</span>
-                <span className="lbl">{cred.label}</span>
-              </div>
-            ))}
+          {/* Stacked on phones, side by side from sm */}
+          <div
+            className="mt-9 flex animate-rise-in flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-8"
+            style={{ animationDelay: `${BUTTONS_DELAY}ms` }}
+          >
+            <BookCallButton location="hero" />
+            <ButtonLink href="#work" variant="text" {...trackClick("see_work_click")}>
+              See our work
+              <LinkArrow />
+            </ButtonLink>
           </div>
         </div>
-      </div>
+
+        <div
+          className="mt-14 animate-slide-up md:mt-18"
+          style={{ animationDelay: `${DEMO_DELAY}ms` }}
+        >
+          <HeroBoardDemo startDelay={DEMO_START} />
+        </div>
+      </Container>
     </section>
   );
 }

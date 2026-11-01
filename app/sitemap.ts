@@ -1,15 +1,14 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/data/siteConfig";
-
-const aboutUrl = "https://about.imtiyazsayyid.in";
-const lastModified = new Date("2026-05-21");
+import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [siteConfig.website, aboutUrl].map((url) => ({
-    url,
-    lastModified,
-    changeFrequency: "monthly",
-    priority: 1,
-    images: [`${url}/assets/logo/logo.png`],
-  }));
+  return [
+    {
+      url: site.url,
+      // Set when the site is built (see next.config.ts)
+      lastModified: process.env.BUILD_TIME,
+      changeFrequency: "monthly",
+      priority: 1,
+    },
+  ];
 }
