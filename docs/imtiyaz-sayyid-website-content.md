@@ -152,7 +152,7 @@ Never mention the real ticketing platform's name or the client's name anywhere, 
 
 Selecting a tab switches the content below. Tabs auto-advance about every 12 seconds until the visitor picks one, then stop.
 
-Each tab shows, on the left: business type, title, an optional big result stat, then Before / What we built / After as short labelled blocks. On the right: that project's animated demo in a brand frame. On phones the text comes first, then the demo.
+Each tab shows, on the left: business type, title, then Before / What we built / After as short labelled blocks. On the right: that project's animated demo in a brand frame. On phones the text comes first, then the demo.
 
 ### Animated demos
 
@@ -180,10 +180,9 @@ Demo storyboards:
 
 ### Case study 2 — An event ticketing company (White-label ticketing platform)
 
-- **Before:** Event organisers needed their own branded ticketing, from seat booking to door entry, without building a platform from scratch for each one.
-- **What we built:** One platform that each client gets as their own branded copy, set up through a guided onboarding with their name, colours and logo. It has three parts: a dashboard for organisers (events, a reserved seating layout builder, bookings and refunds, promo codes, a box office and a merch and food shop), a fast mobile-first website where customers pick their seats live and check out, and a phone scanner app for door staff.
-- **After:** The first client, a theatre in the Middle East, runs its events, box office and door entry on it. E-tickets go out by email with one QR code per booking, and seats can never be sold twice, even under heavy load.
-- **Big stat:** "Seats never sold twice" (even under heavy load)
+- **Before:** Event organisers wanted their own branded ticketing, from seat booking to door entry.
+- **What we built:** One white-label platform with three parts: an organiser dashboard, a mobile site where customers pick seats live, and a door-scanner app.
+- **After:** The first client, a theatre in the Middle East, runs its box office and door entry on it. No seat is ever sold twice, even under heavy load.
 
 ### Case study 3 — A study-abroad company (Student CRM)
 
@@ -196,7 +195,6 @@ Demo storyboards:
 - **Before:** Customer KYC and loan processing were done manually, with paperwork that took months to complete.
 - **What we built:** An online platform for KYC, digital signatures and loan disbursement, delivered in under 15 days.
 - **After:** Processing time dropped from months to a few days. ₹5 Cr has been disbursed to 180 clients through the system.
-- **Big stats:** "Months → days" (processing time) · "₹5 Cr" (disbursed to 180 clients)
 
 ---
 
