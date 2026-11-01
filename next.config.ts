@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    // Stamped once per build; used as the sitemap's lastModified date
+    BUILD_TIME: new Date().toISOString(),
+  },
   experimental: {
     agentFeedback: true,
   },
