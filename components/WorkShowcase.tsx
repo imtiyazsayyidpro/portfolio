@@ -43,7 +43,6 @@ type CaseStudy = {
   before: ReactNode;
   built: ReactNode;
   after: ReactNode;
-  stats?: { value: string; label: string }[];
   Demo: ComponentType;
 };
 
@@ -69,12 +68,11 @@ const caseStudies: CaseStudy[] = [
     business: "An event ticketing company",
     system: "White-label ticketing platform",
     before:
-      "Event organisers needed their own branded ticketing, from seat booking to door entry, without building a platform from scratch for each one.",
+      "Event organisers wanted their own branded ticketing, from seat booking to door entry.",
     built:
-      "One platform that each client gets as their own branded copy, set up through a guided onboarding with their name, colours and logo. It has three parts: a dashboard for organisers (events, a reserved seating layout builder, bookings and refunds, promo codes, a box office and a merch and food shop), a fast mobile-first website where customers pick their seats live and check out, and a phone scanner app for door staff.",
+      "One white-label platform with three parts: an organiser dashboard, a mobile site where customers pick seats live, and a door-scanner app.",
     after:
-      "The first client, a theatre in the Middle East, runs its events, box office and door entry on it. E-tickets go out by email with one QR code per booking, and seats can never be sold twice, even under heavy load.",
-    stats: [{ value: "Seats never sold twice", label: "Even under heavy load" }],
+      "The first client, a theatre in the Middle East, runs its box office and door entry on it. No seat is ever sold twice, even under heavy load.",
     Demo: TicketingDemo,
   },
   {
@@ -102,10 +100,6 @@ const caseStudies: CaseStudy[] = [
       "An online platform for KYC, digital signatures and loan disbursement, delivered in under 15 days.",
     after:
       "Processing time dropped from months to a few days. ₹5 Cr has been disbursed to 180 clients through the system.",
-    stats: [
-      { value: "Months → days", label: "Processing time" },
-      { value: "₹5 Cr", label: "Disbursed to 180 clients" },
-    ],
     Demo: LoanDemo,
   },
 ];
@@ -237,23 +231,6 @@ export function WorkShowcase() {
           <h3 className="mt-2 font-display text-title-sm font-normal tracking-display text-ink md:text-title">
             {study.system}
           </h3>
-
-          {study.stats && (
-            <dl
-              className={`mt-7 grid gap-3 ${
-                study.stats.length > 1 ? "sm:grid-cols-2" : ""
-              }`}
-            >
-              {study.stats.map((stat) => (
-                <div key={stat.label} className="rounded-card bg-surface p-4 shadow-float">
-                  <dt className="text-caption text-stone">{stat.label}</dt>
-                  <dd className="mt-1 font-display text-heading-lg text-ink md:text-[32px]">
-                    {stat.value}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          )}
 
           <dl className="mt-7 space-y-5">
             <CaseBlock term="Before">{study.before}</CaseBlock>

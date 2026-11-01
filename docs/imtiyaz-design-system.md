@@ -99,7 +99,7 @@ Backup options if needed: **Plus Jakarta Sans** (for Figtree) and **Instrument S
 - **Fraunces is used for:**
   - the wordmark;
   - all section headings (h1 and h2);
-  - a few display moments: step titles in "How we work", case-study titles, big result stats, the About headline and fact numbers.
+  - a few display moments: step titles in "How we work", case-study titles, the About headline and fact numbers.
 
   Everything else is Figtree.
 - Fraunces is always weight 400, with slight negative letter-spacing (`-0.01em`).
