@@ -2,8 +2,6 @@
 
 Content for the one-page consultancy site at **imtiyazsayyid.in**, matching the editorial Navy & Gold design in `imtiyaz-design-system.md` (live since November 2026).
 
-Placeholders still to fill in are marked **[PLACEHOLDER]**. The only one left is the About photo.
-
 ---
 
 ## Build notes
@@ -38,7 +36,7 @@ Placeholders still to fill in are marked **[PLACEHOLDER]**. The only one left is
 - **Description (145 characters):** We turn messy Excel sheets, WhatsApp chats and paperwork into simple custom software: CRMs, ERPs, websites and automation for growing businesses.
 - **Keywords:** custom software, custom business software, CRM, ERP, business automation, software consultant, small and mid-sized businesses, Mumbai, India
 - **Link previews:** Open Graph and Twitter cards use the title, description and `app/opengraph-image.png`, with site name "Imtiyaz Sayyid" and type website.
-- **Structured data:** ProfessionalService (business, Mumbai, Maharashtra, India; the six services from `lib/services.ts`), Person (Software Consultant) and WebSite, as JSON-LD. No reviews, ratings, prices or FAQs.
+- **Structured data:** ProfessionalService (business, Mumbai, Maharashtra, India; the six services from `lib/services.ts`), Person (Software Consultant, with the About photo as `image`) and WebSite, as JSON-LD. No reviews, ratings, prices or FAQs.
 
 ---
 
@@ -132,7 +130,7 @@ The list (copy lives in `lib/services.ts`, shared with the structured data):
 
 **Heading:** Hi, I'm Imtiyaz.
 
-**Visual:** a photo of Imtiyaz **[PHOTO]** (currently a placeholder labelled "Photo of Imtiyaz"; see the TODO in `components/About.tsx`).
+**Visual:** a portrait of Imtiyaz (`public/imtiyaz.jpg`, cropped to 4:5 from the original photo). He faces left, so the photo sits to the right of the text on desktop and he looks into the page; on phones it comes first, above the text. Alt text: "Imtiyaz Sayyid". The same image is the Person `image` in the structured data.
 
 **Lead (serif):** For the past three years I've been building custom software for small and mid-sized businesses across lending, manufacturing, education, e-commerce, events and media.
 

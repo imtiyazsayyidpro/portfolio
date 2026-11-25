@@ -1,26 +1,31 @@
+import Image from "next/image";
 import { Reveal } from "@/components/motion/Reveal";
 import { Container } from "@/components/ui/Container";
 import { revealItem } from "@/lib/reveal";
+import portrait from "@/public/imtiyaz.jpg";
 
 /** The person behind the work, in first person. */
 export function About() {
   return (
     <section id="about" aria-labelledby="about-title" className="border-t border-line">
       <Container className="py-20 md:py-[120px]">
-        <Reveal className="grid items-center gap-x-[88px] gap-y-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-          {/*
-            TODO: replace the placeholder with the photo, e.g.
-            <Image src="/imtiyaz.jpg" alt="Imtiyaz Sayyid" fill className="object-cover" />
-          */}
+        <Reveal className="grid items-center gap-x-[88px] gap-y-12 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+          {/* Photo: first on phones; on the right from lg, so Imtiyaz (who
+              faces left) looks into the page rather than off its edge. */}
           <div
             {...revealItem()}
-            className="mx-auto flex aspect-4/5 w-full max-w-sm items-center justify-center rounded-md bg-[#e9e3d6] lg:max-w-none"
+            className="relative mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-md bg-sand lg:order-2 lg:max-w-none"
           >
-            <span className="rounded-pill border border-dashed border-[#a9a08d] px-3.5 py-[7px] text-[13px] text-[#5f5a4e]">
-              Photo of Imtiyaz
-            </span>
+            <Image
+              src={portrait}
+              alt="Imtiyaz Sayyid"
+              fill
+              placeholder="blur"
+              sizes="(min-width: 1280px) 460px, (min-width: 1024px) 36vw, (min-width: 424px) 384px, calc(100vw - 40px)"
+              className="object-cover"
+            />
           </div>
-          <div>
+          <div className="lg:order-1">
             <h2
               {...revealItem()}
               id="about-title"

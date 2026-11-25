@@ -21,7 +21,7 @@ The tokens live in `app/globals.css`; this file explains them and the rules behi
 - Glows, gradient washes, glass panels, rotating light borders, cursor spotlights.
 - Rows of big stat tiles; bento grids of icon cards.
 - Dark mode. The audience reads this in daylight, at work.
-- Emoji, stock photos, 3D renders.
+- Emoji, stock photos, 3D renders. The one photo on the site is the real portrait in About.
 
 ---
 
