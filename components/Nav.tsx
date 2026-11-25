@@ -6,9 +6,8 @@ import { BookCallButton } from "@/components/ui/BookCallButton";
 import { navLinks, site } from "@/lib/site";
 
 /**
- * Floating pill nav: white, fully rounded, sticky a little below the top.
- * Below lg the links collapse into a menu button that opens a full-width
- * panel; the wordmark and "Book a call" stay visible at every width.
+ * Sticky top bar: serif wordmark, three links, "Book a call". Below md the
+ * links move into a menu that opens under the bar.
  */
 export function Nav({
   linkPrefix = "",
@@ -18,7 +17,6 @@ export function Nav({
 }) {
   const [open, setOpen] = useState(false);
 
-  // Close the mobile menu with Escape.
   useEffect(() => {
     if (!open) return;
     const onKey = (event: KeyboardEvent) => {
@@ -31,25 +29,25 @@ export function Nav({
   const close = () => setOpen(false);
 
   return (
-    <header className="sticky top-3 z-50 px-3 md:top-4 md:px-6">
+    <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur-md">
       <nav
         aria-label="Main"
-        className="relative mx-auto flex h-16 max-w-page items-center justify-between gap-3 rounded-pill bg-surface pr-2 pl-4 shadow-float sm:pl-6"
+        className="mx-auto flex h-[72px] max-w-page items-center justify-between gap-4 px-5 md:h-[76px] md:px-12"
       >
         <a
           href={linkPrefix ? "/" : "#top"}
           onClick={close}
-          className="min-w-0 truncate rounded-sm font-display text-heading-sm font-normal tracking-display text-ink sm:text-heading"
+          className="font-display text-[23px] tracking-[-0.02em] text-ink no-underline md:text-[25px]"
         >
           {site.name}
         </a>
 
-        <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 lg:flex xl:gap-8">
+        <ul className="hidden items-center gap-9 md:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={`${linkPrefix}${link.href}`}
-                className="inline-flex min-h-11 items-center rounded-sm text-body font-medium text-ironwood hover:text-ink"
+                className="inline-flex min-h-11 items-center text-[15px] font-medium text-body no-underline transition-colors hover:text-ink"
               >
                 {link.label}
               </a>
@@ -57,11 +55,11 @@ export function Nav({
           ))}
         </ul>
 
-        <div className="flex shrink-0 items-center gap-1">
+        <div className="flex items-center gap-1">
           <BookCallButton size="compact" location="nav" />
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-pill text-ink lg:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-pill text-ink md:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((value) => !value)}
@@ -72,18 +70,14 @@ export function Nav({
         </div>
       </nav>
 
-      <div
-        id="mobile-menu"
-        hidden={!open}
-        className="mx-auto mt-2 max-w-page rounded-card bg-surface p-2 shadow-float lg:hidden"
-      >
-        <ul className="flex flex-col">
+      <div id="mobile-menu" hidden={!open} className="border-t border-line bg-paper md:hidden">
+        <ul className="mx-auto flex max-w-page flex-col px-3 py-2">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={`${linkPrefix}${link.href}`}
                 onClick={close}
-                className="flex min-h-12 items-center rounded-xl px-4 text-lead font-medium text-ink hover:bg-canvas"
+                className="flex min-h-12 items-center rounded-xl px-2 font-display text-[22px] text-ink no-underline"
               >
                 {link.label}
               </a>

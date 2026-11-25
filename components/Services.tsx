@@ -1,107 +1,53 @@
-import type { ComponentType } from "react";
-import {
-  AutomationIllustration,
-  BusinessSystemsIllustration,
-  IntegrationsIllustration,
-  StoreIllustration,
-  SupportServiceIllustration,
-  WebsiteIllustration,
-} from "@/components/illustrations/ServiceIllustrations";
 import { Reveal } from "@/components/motion/Reveal";
-import { WorkflowLines } from "@/components/patterns/WorkflowLines";
 import { Container } from "@/components/ui/Container";
 import { revealItem } from "@/lib/reveal";
 import { services } from "@/lib/services";
 
-// Copy lives in lib/services.ts (shared with the structured data); the
-// first entry is the featured service, the rest get these illustrations.
-const [featured, ...supporting] = services;
-const illustrations: ComponentType[] = [
-  WebsiteIllustration,
-  StoreIllustration,
-  AutomationIllustration,
-  IntegrationsIllustration,
-  SupportServiceIllustration,
-];
+// Copy lives in lib/services.ts (shared with the structured data).
+const [core, ...supporting] = services;
 
-/**
- * "What we build". Deliberately calm and aligned (flat bordered cards in an
- * even grid) so it reads differently from the tilted "Sound familiar?" bento.
- */
+/** A quiet list: the core service first, marked as where clients start. */
 export function Services() {
   return (
-    <section
-      id="services"
-      aria-labelledby="services-title"
-      className="relative isolate bg-band py-18 md:py-25"
-    >
-      {/* Section divider: workflow lines in the top padding */}
-      <WorkflowLines
-        variant="divider"
-        className="absolute inset-x-0 top-0 -z-10 h-16 md:h-24"
-      />
-
-      <Container>
-        {/* Split heading: title left, subtitle right on large screens */}
-        <Reveal className="grid gap-5 lg:grid-cols-2 lg:items-end lg:gap-16">
+    <section id="services" aria-labelledby="services-title">
+      <Container className="grid gap-x-[72px] gap-y-10 py-20 md:py-[120px] lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <Reveal>
           <h2
             {...revealItem()}
             id="services-title"
-            className="font-display text-headline-sm font-normal tracking-display text-ink text-balance md:text-headline"
+            className="font-display text-[clamp(40px,5vw,68px)] leading-[1.02] tracking-[-0.03em]"
           >
             What we build
           </h2>
-          <p
-            {...revealItem()}
-            className="max-w-prose text-body-lg text-stone md:text-lead lg:pb-2"
-          >
-            Custom business systems are our core. Everything else supports
-            them.
+          <p {...revealItem()} className="mt-6 max-w-[380px] text-body">
+            Most clients start with a custom system. Everything else is there to
+            make it work harder.
           </p>
         </Reveal>
 
-        {/* Featured service. Cards lift on hover and their gold accent
-            pulses once (data-illustration-hover, see globals.css). */}
-        <Reveal self className="mt-10 md:mt-14">
-          <article
-            data-illustration-hover
-            className="card-lift grid items-center gap-8 rounded-frame border border-mist bg-canvas p-6 md:grid-cols-[1fr_1fr] md:gap-10 md:p-10 lg:p-12"
+        <Reveal as="ul" className="border-t border-ink">
+          <li
+            {...revealItem()}
+            className="grid gap-x-8 gap-y-2 border-b border-line py-7 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]"
           >
-            <div>
-              <h3 className="font-display text-title-sm font-normal tracking-display text-ink md:text-title">
-                {featured.title}
-              </h3>
-              <p className="mt-4 max-w-prose text-body-lg text-stone md:text-lead">
-                {featured.description}
-              </p>
-            </div>
-            <div className="mx-auto w-full max-w-sm rounded-card border border-mist bg-surface p-4 md:max-w-none md:p-6">
-              <BusinessSystemsIllustration />
-            </div>
-          </article>
-        </Reveal>
-
-        {/* Supporting services: 1 column on phones, 2 on tablets, 5 on wide */}
-        <Reveal as="ul" className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
-          {supporting.map(({ title, description }, index) => {
-            const Illustration = illustrations[index];
-            return (
+            <h3>
+              <span className="block font-display text-[28px] leading-[1.15]">{core.title}</span>
+              <span className="mt-2 block text-[13px] font-semibold text-gold-text">
+                Where most clients start
+              </span>
+            </h3>
+            <p className="text-[16px] text-body">{core.description}</p>
+          </li>
+          {supporting.map((service) => (
             <li
-              key={title}
+              key={service.title}
               {...revealItem()}
-              data-illustration-hover
-              className="card-lift rounded-card border border-mist bg-canvas p-6 sm:last:col-span-2 xl:last:col-span-1"
+              className="grid gap-x-8 gap-y-2 border-b border-line py-[26px] sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]"
             >
-              <div className="w-28 rounded-xl border border-mist bg-surface p-2">
-                <Illustration />
-              </div>
-              <h3 className="mt-5 text-heading-sm font-semibold text-ink">
-                {title}
-              </h3>
-              <p className="mt-2 text-body text-stone">{description}</p>
+              <h3 className="font-display text-[24px] leading-[1.2]">{service.title}</h3>
+              <p className="text-[16px] text-body">{service.description}</p>
             </li>
-            );
-          })}
+          ))}
         </Reveal>
       </Container>
     </section>

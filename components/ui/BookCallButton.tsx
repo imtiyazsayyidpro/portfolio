@@ -5,10 +5,10 @@ import { site } from "@/lib/site";
 
 type BookCallButtonProps = Omit<ComponentProps<typeof ButtonLink>, "href" | "children"> & {
   /** Where the button sits, sent with the book_call_click Analytics event. */
-  location: "nav" | "hero" | "contact" | "mobile_menu" | "not_found";
+  location: "nav" | "hero" | "contact" | "not_found";
 };
 
-/** "Book a call" primary button: opens the booking page in a new tab. */
+/** "Book a call": opens the booking page in a new tab. */
 export function BookCallButton({ location, ...props }: BookCallButtonProps) {
   return (
     <ButtonLink
