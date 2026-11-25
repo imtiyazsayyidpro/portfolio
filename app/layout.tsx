@@ -1,26 +1,24 @@
 import type { Metadata, Viewport } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Figtree, Fraunces } from "next/font/google";
+import { Figtree, Newsreader } from "next/font/google";
 import { AnalyticsEvents } from "@/components/analytics/AnalyticsEvents";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { site } from "@/lib/site";
 import { structuredDataJson } from "@/lib/structuredData";
 import "./globals.css";
 
-// Both are variable fonts: one file each covers every weight we use
-// (Figtree 400–700, Fraunces 400 with optical sizing), which is lighter than
-// several static weight files. Fallback metrics are adjusted to avoid layout
-// shift while they swap in.
+// Both are variable fonts: one file each covers every weight we use.
+// Figtree for body and interface text.
 const figtree = Figtree({
   variable: "--font-figtree",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Display serif for the wordmark and headings; the optical size axis keeps
-// large headings crisp.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// Editorial serif for the wordmark and headings; the optical size axis keeps
+// large headings crisp and small ones sturdy.
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
   axes: ["opsz"],
   display: "swap",
@@ -74,9 +72,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en-IN"
       data-scroll-behavior="smooth"
-      className={`${figtree.variable} ${fraunces.variable} antialiased`}
+      className={`${figtree.variable} ${newsreader.variable} antialiased`}
     >
-      <body className="min-h-dvh bg-canvas font-sans text-body text-ink">
+      <body className="min-h-dvh bg-paper font-sans text-[17px] leading-[1.6] text-ink">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: structuredDataJson() }}

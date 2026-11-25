@@ -30,14 +30,12 @@ export const site = {
 
   // Browser chrome and app colours (navy primary, off-white background).
   // Keep in step with --color-primary and --color-canvas in app/globals.css.
-  themeColor: "#1b2a4a",
-  backgroundColor: "#f8f8f6",
+  themeColor: "#15203a",
+  backgroundColor: "#faf8f4",
 } as const;
 
 export const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#how-we-work", label: "How we work" },
   { href: "#work", label: "Work" },
+  { href: "#services", label: "Services" },
   { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
 ] as const;

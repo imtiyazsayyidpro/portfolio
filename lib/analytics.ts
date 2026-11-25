@@ -9,8 +9,7 @@ export type AnalyticsEvent =
   | "whatsapp_click"
   | "email_click"
   | "linkedin_click"
-  | "see_work_click"
-  | "work_tab_view";
+  | "see_work_click";
 
 type Gtag = (command: "event", name: string, params?: Record<string, string>) => void;
 
