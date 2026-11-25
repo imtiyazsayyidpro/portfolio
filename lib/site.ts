@@ -29,10 +29,11 @@ export const site = {
   url: "https://imtiyazsayyid.in",
 
   // Browser chrome and app colours. themeColor tints the phone's status bar
-  // and the browser's address bar (Chrome on Android, Safari on iOS); it
-  // matches the page and nav so the top of the screen looks seamless.
-  // Keep both in step with --color-paper in app/globals.css.
-  themeColor: "#faf8f4",
+  // and the browser's address bar. It's brand navy (--color-navy), not the
+  // page colour: browsers treat near-white as "no preference" and fall back
+  // to the phone's own theme colour, so a paper-coloured bar can't be relied
+  // on. backgroundColor (the app splash screen) matches --color-paper.
+  themeColor: "#1b2a4a",
   backgroundColor: "#faf8f4",
 } as const;
 
