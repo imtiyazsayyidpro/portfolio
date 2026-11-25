@@ -5,9 +5,19 @@ import { CloseIcon, MenuIcon } from "@/components/icons";
 import { BookCallButton } from "@/components/ui/BookCallButton";
 import { navLinks, site } from "@/lib/site";
 
+/** Below this many pixels from the top, the bar always shows. */
+const ALWAYS_SHOW_ABOVE = 80;
+/** Ignore scroll movements smaller than this, so tiny jitters don't flicker it. */
+const SCROLL_TOLERANCE = 6;
+
 /**
- * Sticky top bar: serif wordmark, three links, "Book a call". Below md the
- * links move into a menu that opens under the bar.
+ * Top bar: serif wordmark, three links, "Book a call". Below md the links
+ * move into a menu that opens under the bar.
+ *
+ * It slides away while the visitor scrolls down, to free up the screen, and
+ * slides back as soon as they scroll up. It always shows near the top of the
+ * page, while the mobile menu is open, and whenever something inside it has
+ * keyboard focus.
  */
 export function Nav({
   linkPrefix = "",
@@ -16,6 +26,40 @@ export function Nav({
   linkPrefix?: string;
 }) {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [focused, setFocused] = useState(false);
+
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const y = window.scrollY;
+      if (y < ALWAYS_SHOW_ABOVE) {
+        setHidden(false);
+      } else if (y > lastY + SCROLL_TOLERANCE) {
+        setHidden(true);
+      } else if (y < lastY - SCROLL_TOLERANCE) {
+        setHidden(false);
+      } else {
+        return; // small movement: keep lastY so slow scrolls still add up
+      }
+      lastY = y;
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const showing = !hidden || open || focused;
 
   useEffect(() => {
     if (!open) return;
@@ -29,7 +73,15 @@ export function Nav({
   const close = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur-md">
+    <header
+      onFocus={() => setFocused(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
+      }}
+      className={`sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur-md transition-transform duration-300 ease-[cubic-bezier(0.2,0.7,0.2,1)] ${
+        showing ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <nav
         aria-label="Main"
         className="mx-auto flex h-[72px] max-w-page items-center justify-between gap-4 px-5 md:h-[76px] md:px-12"
