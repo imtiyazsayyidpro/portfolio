@@ -21,6 +21,7 @@ export function About() {
               alt="Imtiyaz Sayyid"
               fill
               placeholder="blur"
+              quality={90}
               sizes="(min-width: 1280px) 460px, (min-width: 1024px) 36vw, (min-width: 424px) 384px, calc(100vw - 40px)"
               className="object-cover"
             />

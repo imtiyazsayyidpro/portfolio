@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
   experimental: {
     agentFeedback: true,
   },
+  images: {
+    // 75 is the default; 90 is for the About portrait, where faces and
+    // fine shirt stripes look soft at 75 on large, sharp screens.
+    qualities: [75, 90],
+  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
