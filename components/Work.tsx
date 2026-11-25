@@ -19,23 +19,23 @@ const caseStudies: CaseStudy[] = [
     system: "Order tracking system",
     result: "Every order, from first enquiry to delivery, in one place.",
     story:
-      "Leads, quotes and payments lived in Excel, cut off from the factory. We built one system for sales, invoicing and production, connected to their manufacturing software, so nobody has to ask around to find an order.",
+      "Leads, quotes and payments lived in Excel, and checking on an order meant calling the factory. Now sales, invoicing and production share one system, connected to the factory's own software, so anyone can see where an order stands without asking around.",
     Visual: OrderVisual,
   },
   {
     business: "Event ticketing company",
-    system: "White-label ticketing platform",
+    system: "Branded ticketing platform",
     result: "No seat sold twice, even under heavy load.",
     story:
-      "Organisers wanted their own branded ticketing. We built an organiser dashboard, a mobile site where customers pick seats live, and a door-scanner app. A theatre in the Middle East now runs its box office and door entry on it.",
+      "Event organisers wanted ticketing under their own brand, from booking to the door. We set up an organiser dashboard, a mobile site where customers pick their own seats live, and a door-scanner app. A theatre in the Middle East now runs its box office and door entry on it.",
     Visual: SeatsVisual,
   },
   {
     business: "Study-abroad company",
-    system: "Student CRM, rebuilt",
-    result: "Rebuilt in three months, with every record moved safely.",
+    system: "Student CRM",
+    result: "Replaced in three months, without losing a single record.",
     story:
-      "A five-year-old system had become slow and hard to use. The new one covers leads, students, franchises and applications, and lets partners ask questions about their own data in plain English.",
+      "After five years, their old system had become slow and frustrating. We replaced it and moved every record across safely. The team now manages leads, students, franchises and applications in one place, and partners get answers about their own numbers just by asking in plain English.",
     Visual: CrmVisual,
   },
   {
@@ -43,7 +43,7 @@ const caseStudies: CaseStudy[] = [
     system: "Loan processing system",
     result: "From months of paperwork to a few days. ₹5 Cr disbursed to 180 clients.",
     story:
-      "KYC and loan processing were done by hand. We delivered an online platform for KYC, digital signatures and disbursement in under 15 days.",
+      "KYC and loan approvals were done on paper, and a single loan could take months. In under 15 days we moved the whole process online: KYC, digital signatures and disbursement in one flow.",
     Visual: LoanVisual,
   },
 ];
@@ -59,11 +59,12 @@ export function Work() {
             id="work-title"
             className="font-display text-[clamp(40px,5vw,68px)] leading-[1.02] tracking-[-0.03em]"
           >
-            Selected work
+            Results
           </h2>
           <p {...revealItem()} className="text-body">
-            Four of the 10+ systems we&apos;ve shipped. Client names stay
-            private; the screens are recreations with sample data.
+            Four of the 10+ systems we&apos;ve delivered for growing businesses.
+            Client names stay private; the screens are recreations with sample
+            data.
           </p>
         </Reveal>
 

@@ -35,11 +35,12 @@ export const metadata: Metadata = {
   title: site.title,
   description: site.description,
   keywords: [
+    "business automation",
+    "workflow automation",
     "custom software",
     "custom business software",
     "CRM",
     "ERP",
-    "business automation",
     "software consultant",
     "small and mid-sized businesses",
     "Mumbai",

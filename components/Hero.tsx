@@ -17,18 +17,19 @@ export function Hero() {
             id="hero-title"
             className="font-display text-[clamp(46px,6.6vw,92px)] leading-[0.98] tracking-[-0.035em] text-balance"
           >
-            Software built around how you work.
+            Run your business, not your spreadsheets.
           </h1>
           <div className="lg:pb-2">
             <p className="text-[18px] leading-[1.55] text-body md:text-[19px]">
-              We turn messy Excel sheets and WhatsApp chaos into simple custom
-              software your team actually uses. For growing businesses in
-              manufacturing, lending, education and events.
+              We automate the manual work that slows growing businesses down:
+              chasing orders, following up on payments, copying data between
+              sheets. All of it moves into one system, set up around how your
+              team already works.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <BookCallButton location="hero" />
               <ButtonLink href="#work" variant="quiet" {...trackClick("see_work_click")}>
-                See the work
+                See the results
               </ButtonLink>
             </div>
           </div>

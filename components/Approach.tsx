@@ -4,16 +4,16 @@ import { revealItem } from "@/lib/reveal";
 
 const steps = [
   {
-    title: "We learn before we build",
-    body: "We sit with you and your team to see how work actually flows today, workarounds included.",
+    title: "We start with your business",
+    body: "We spend time with you and your team to see how work really gets done, workarounds and all, so the system fits the way you already run things.",
   },
   {
-    title: "You see it working in weeks",
-    body: "Progress every week, on your real data. Launch in weeks, not months.",
+    title: "Results in weeks, not months",
+    body: "You see it working on your own data within weeks, with progress every week until your team is using it day to day.",
   },
   {
-    title: "We stay after launch",
-    body: "We train your team, fix issues quickly and keep improving the system as you grow.",
+    title: "We stay with you",
+    body: "We train your team, fix issues quickly and keep improving things as your business grows.",
   },
 ];
 
@@ -39,9 +39,10 @@ export function Approach() {
             <span className="text-faint">Orders in someone&apos;s head.</span>
           </h2>
           <p {...revealItem()} className="mt-8 max-w-prose text-[18px] text-body md:text-[19px]">
-            That&apos;s how most growing businesses run, until it stops working.
-            We replace the patchwork with one system, shaped around the way your
-            team already works.
+            It works, until you grow. Then orders slip, payments get missed and
+            your best people spend their day copying data from one place to
+            another. We bring it all into one system that does the repetitive
+            work for you, so you always know where things stand.
           </p>
         </Reveal>
 

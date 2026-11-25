@@ -7,31 +7,31 @@ export const services = [
   {
     title: "Custom business systems",
     description:
-      "CRMs, ERPs and internal tools shaped around how your team already works. Leads, orders, payments and production, all in one place.",
+      "One place for your leads, orders, payments and production, set up around how your team already works. Your own CRM or ERP, without the parts you don't need.",
   },
   {
     title: "Websites",
     description:
-      "Fast, clean websites that explain what you do and bring in enquiries.",
+      "A clear, fast website that explains what you do and brings in enquiries.",
   },
   {
     title: "E-commerce stores",
     description:
-      "Online stores with catalogues, payments and order management that are easy to run.",
+      "An online store that takes orders and payments, and is easy for your team to run day to day.",
   },
   {
-    title: "Automation and AI tools",
+    title: "Automation and AI",
     description:
-      "Take repetitive work off your team's plate with business automation, from auto-generated documents to AI that answers questions about your data.",
+      "Hand the repetitive work to the system: documents that create themselves, updates that reach the right people, and AI that answers questions about your business in plain English.",
   },
   {
-    title: "Integrations",
+    title: "Connecting your tools",
     description:
-      "Connect the tools you already use, like payment gateways, WhatsApp, accounting and existing software.",
+      "Your payment gateway, WhatsApp, accounting and existing software, working together instead of being copied between by hand.",
   },
   {
     title: "Ongoing support",
     description:
-      "We keep your systems running, fix issues quickly and keep improving them as you grow.",
+      "We keep everything running, fix issues quickly and keep improving it as your business grows.",
   },
 ] as const;

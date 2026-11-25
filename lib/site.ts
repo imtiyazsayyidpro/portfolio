@@ -1,16 +1,16 @@
 /** Contact details and links used across the page. */
 
 const whatsappMessage =
-  "Hi Imtiyaz, I came across your website and would like to talk about software for my business.";
+  "Hi Imtiyaz, I came across your website and would like to talk about automating parts of my business.";
 
 export const site = {
   name: "Imtiyaz Sayyid",
-  tagline: "Software built around how you work",
+  tagline: "Business automation for growing businesses",
 
   // Search: page title and description (description under 160 characters)
-  title: "Imtiyaz Sayyid — Custom Business Software & Automation, Mumbai",
+  title: "Imtiyaz Sayyid — Business Automation & Custom Systems, Mumbai",
   description:
-    "We turn messy Excel sheets, WhatsApp chats and paperwork into simple custom software: CRMs, ERPs, websites and automation for growing businesses.",
+    "We automate the manual work in growing businesses: orders, follow-ups, payments and paperwork, in one system built around how your team works.",
 
   telephone: "+91 79776 01610",
 
@@ -35,7 +35,7 @@ export const site = {
 } as const;
 
 export const navLinks = [
-  { href: "#work", label: "Work" },
+  { href: "#work", label: "Results" },
   { href: "#services", label: "Services" },
   { href: "#about", label: "About" },
 ] as const;

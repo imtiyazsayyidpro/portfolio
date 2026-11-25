@@ -34,20 +34,22 @@ export function About() {
               Hi, I&apos;m Imtiyaz.
             </h2>
             <p {...revealItem()} className="mt-8 max-w-[620px] font-display text-[22px] leading-[1.4] md:text-[24px]">
-              For the past three years I&apos;ve been building custom software for
-              small and mid-sized businesses across lending, manufacturing,
-              education, e-commerce, events and media.
+              For the past three years I&apos;ve helped small and mid-sized
+              businesses in lending, manufacturing, education, e-commerce, events
+              and media replace manual work with systems their teams rely on
+              every day.
             </p>
             <div {...revealItem()} className="mt-6 max-w-[620px] space-y-4 text-body">
               <p>
-                What I enjoy most is the part before the code: understanding how
-                a business really runs, then turning that into something simple
-                people actually want to use.
+                I start by understanding how your business really runs: who does
+                what, where things get stuck, and what your team keeps doing by
+                hand. Then I turn that into something simple your people will
+                actually use.
               </p>
               <p>
                 Based in Mumbai, I lead every project personally and bring in
-                trusted specialists when the work needs it. You always work
-                directly with me, without handoffs or middlemen.
+                trusted specialists when the work needs it. You deal directly with
+                me from the first call onwards, with no handoffs or middlemen.
               </p>
             </div>
           </div>

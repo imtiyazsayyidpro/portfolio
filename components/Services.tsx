@@ -17,11 +17,11 @@ export function Services() {
             id="services-title"
             className="font-display text-[clamp(40px,5vw,68px)] leading-[1.02] tracking-[-0.03em]"
           >
-            What we build
+            How we help
           </h2>
           <p {...revealItem()} className="mt-6 max-w-[380px] text-body">
-            Most clients start with a custom system. Everything else is there to
-            make it work harder.
+            Most clients start with one system that runs their day-to-day
+            operations. Everything else helps it do more.
           </p>
         </Reveal>
 
