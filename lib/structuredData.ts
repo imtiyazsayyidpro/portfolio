@@ -49,6 +49,7 @@ export const structuredData = {
       name: site.name,
       jobTitle: "Software Consultant",
       url: site.url,
+      image: `${site.url}/imtiyaz.jpg`,
       worksFor: { "@id": businessId },
       sameAs: [site.linkedinUrl],
     },
