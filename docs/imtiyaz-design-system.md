@@ -34,7 +34,7 @@ Tailwind's default palette is cleared (`--color-*: initial`), so only these toke
 | Token | Hex | Use |
 |-------|-----|-----|
 | `paper` | `#faf8f4` | Page background. Warm, not grey. |
-| `sand` | `#f2eee6` | The one alternate band (Selected work). |
+| `sand` | `#f2eee6` | The one alternate band (Results). |
 | `surface` | `#ffffff` | Cards and recreated app screens. |
 | `wash` | `#fbfaf7` | Header rows and toolbars inside app screens. |
 

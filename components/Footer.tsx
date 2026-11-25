@@ -8,7 +8,7 @@ export function Footer() {
       <Container className="flex flex-wrap items-center justify-between gap-x-10 gap-y-4 py-9 text-[14px] text-body">
         <p>
           <span className="font-display text-[20px] text-ink">{site.name}</span>
-          <span className="ml-3.5">Custom software and automation · {site.city}, India</span>
+          <span className="ml-3.5">Business automation and custom systems · {site.city}, India</span>
         </p>
         <ul className="flex items-center gap-6">
           <li>
