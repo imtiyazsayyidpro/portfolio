@@ -28,9 +28,11 @@ export const site = {
 
   url: "https://imtiyazsayyid.in",
 
-  // Browser chrome and app colours (navy primary, off-white background).
-  // Keep in step with --color-primary and --color-canvas in app/globals.css.
-  themeColor: "#15203a",
+  // Browser chrome and app colours. themeColor tints the phone's status bar
+  // and the browser's address bar (Chrome on Android, Safari on iOS); it
+  // matches the page and nav so the top of the screen looks seamless.
+  // Keep both in step with --color-paper in app/globals.css.
+  themeColor: "#faf8f4",
   backgroundColor: "#faf8f4",
 } as const;
 
